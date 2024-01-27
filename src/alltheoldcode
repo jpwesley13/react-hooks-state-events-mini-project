@@ -1,0 +1,141 @@
+// App:
+// import React, {useState} from "react"; //state is necessary on my app because so many things are going to use it down the pipeline
+// import CategoryFilter from "./CategoryFilter";
+// import NewTaskForm from "./NewTaskForm";
+// import TaskList from "./TaskList";
+
+// import { CATEGORIES, TASKS } from "../data"; //This is like a local version of a fetch. Whenever you fetch you will probably use state
+// // console.log("Here's the data you're working with");
+// // console.log({ CATEGORIES, TASKS });
+
+// function App() {
+//   const [tasks, setTasks] = useState(TASKS) //the states in question
+//   const [selectedCategory, setCategory] = useState("All")
+
+//   const handleDeleteTask = (taskText) => {
+//     const filteredTasks = tasks.filter(task => taskText !== task.text)
+//     setTasks(filteredTasks)
+//   }
+
+//   const handleCategoryChange = (category) => {
+//     setCategory(category)
+//   }
+
+//   return (
+//     <div className="App">
+//       <h2>My tasks</h2>
+//       <CategoryFilter 
+//       categories={CATEGORIES}
+//       onCategoryChange={handleCategoryChange}
+//       currentCategory={selectedCategory}/>
+//       <NewTaskForm />
+//       <TaskList 
+//       currentCategory={selectedCategory}
+//       tasks={tasks} 
+//       handleDeleteTask={handleDeleteTask}/>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// TaskList:
+// import React, {useState} from "react";
+// import Task from "./Task";
+
+// function TaskList({tasks, currentCategory,  handleDeleteTask}) {
+
+//   // const [tasksList, setTaskList] = useState(tasks)
+
+//   // function onDelete(iD){
+//   //   setTaskList(firstList => firstList.filter(task => task.text !==iD) )
+//   // }
+
+// //   function listedTasks(){
+// //     return(
+// // //      tasks.map(task => <li key={task.text} className="task">{task.text}</li>) My version passes the test but doesn't actually do the right thing, which ruins me for later
+// //       tasksList.map(task => <Task key={task.text} 
+// //         task={task}
+// //         onDelete={onDelete}
+// //         handleDeleteTask={handleDeleteTask}/>)
+// //     )
+// //   } This goes after the div in my return:       <ul>{listedTasks()}</ul>
+
+// function pleaseWork(){
+//   return(
+// //      tasks.map(task => <li key={task.text} className="task">{task.text}</li>) My version passes the test but doesn't actually do the right thing, which ruins me for later
+// tasks.map(task => {
+//   <Task 
+//       key={task.text} 
+//       task={task}
+//       handleDeleteTask={handleDeleteTask}
+//       category={currentCategory}/>}))
+// }
+
+//   const filteredTasks = currentCategory === "All"
+//     ? tasks
+//     : tasks.filter(task => task.category === currentCategory)
+
+//   return (
+//     <div className="tasks">
+// <ul>{pleaseWork}</ul>
+//       {/* {tasks.map(task => {
+//         <Task 
+//             key={task.text} 
+//             task={task}
+//             handleDeleteTask={handleDeleteTask}
+//             category={currentCategory}/>})} */}
+//     </div>
+//   );
+// }
+
+// export default TaskList;
+
+// CategoryFilter:
+// import React, {useState} from "react";
+
+// function CategoryFilter({ categories, handleCategoryChange }) {
+//   const [selectedCategory, setSelectedCategory] = useState("All");
+
+//   function handleClick(category) {
+//     setSelectedCategory(category);
+//     handleCategoryChange(category); // Call the callback function
+//   }
+
+//   function categoryButtons(){
+//     return (
+//       categories.map(category => 
+//       <button 
+//         key={category} 
+//         onClick={() => handleClick(category)}
+//         className={category === selectedCategory ? "selected" : ""}>{category}
+//       </button>)
+//     )
+//   }
+
+//   return (
+//     <div className="categories">
+//       <h5>Category filters</h5>
+//       {categoryButtons()}
+//     </div>
+//   );
+// }
+
+// export default CategoryFilter;
+
+// Task:
+// import React from "react";
+
+// function Task({text, category}) {
+//   console.log(text)
+  
+//   return (
+//     <div className="task">
+//       <div className="label">{category}</div>
+//       <div className="text">{text}</div>
+//       <button className="delete">X</button>
+//     </div>
+//   );
+// }
+
+// export default Task;
